@@ -1,8 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Linkly Frontend
 
-## Getting Started
+Este es el frontend de **Linkly**, un acortador de enlaces moderno construido con Next.js 14 y Zustand.
 
-First, run the development server:
+## Características
+
+- Registro, login y logout de usuarios
+- Creación, listado y eliminación de enlaces cortos
+- Redirección automática por shortCode
+- Panel de usuario y estadísticas
+- Estado global con Zustand (sin Context API)
+- UI moderna y responsiva
+
+## Requisitos
+
+# Linkly Frontend
+
+This is the frontend for **Linkly**, a modern URL shortener built with Next.js 14 and Zustand.
+
+## Features
+
+- User registration, login, and logout
+- Create, list, and delete short links
+- Automatic redirection by shortCode
+- User dashboard and statistics
+- Global state with Zustand (no Context API)
+- Modern and responsive UI
+
+## Requirements
+
+- Node.js >= 18
+- Configured environment variables
+
+## Installation
+
+```bash
+cd link-kly
+npm install
+```
+
+## Environment Variables
+
+Create a `.env.local` file in the `link-kly/` folder with the following content:
+
+```
+NEXT_PUBLIC_API_URL=https://your-backend.com/api # or http://localhost:4000/api for development
+```
+
+## Scripts
+
+- `npm run dev` — Start the frontend in development mode
+- `npm run build` — Build for production
+- `npm start` — Start in production mode
+
+## Main Structure
+
+- `/app` — Next.js routes and pages
+- `/components` — Reusable components
+- `/lib` — Zustand stores and utilities
+
+## Security
+
+- User is hydrated from the backend using httpOnly cookies
+- No sensitive information is stored in localStorage
+
+## Deployment
+
+- Ready for Vercel, Railway, Render, etc.
+- Set environment variables in your provider's dashboard
+
+## License
+
+MIT
 
 ```bash
 npm run dev
