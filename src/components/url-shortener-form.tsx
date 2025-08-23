@@ -75,10 +75,11 @@ export function UrlShortenerForm({ onAuthRequired }: UrlShortenerFormProps) {
       return;
     }
 
-    const result = await createLink(originalUrl);
+    const result = await createLink({ originalUrl, optionalCode: customCode });
     if (result) {
+      const url = `https://www.midomino/${result.shortCode}`;
       setSuccess("¡Enlace acortado exitosamente!");
-      setLastShortenedUrl(result.shortCode);
+      setLastShortenedUrl(url);
       setOriginalUrl("");
       setCustomCode("");
     } else {

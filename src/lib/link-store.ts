@@ -16,7 +16,13 @@ interface LinkState {
   links: Link[];
   isLoading: boolean;
   fetchLinks: () => Promise<void>;
-  createLink: (originalUrl: string) => Promise<Link | null>;
+  createLink: ({
+    originalUrl,
+    optionalCode,
+  }: {
+    originalUrl: string;
+    optionalCode: string;
+  }) => Promise<Link | null>;
   deleteLink: (id: string) => Promise<boolean>;
   setLinks: (links: Link[]) => void;
   existsShortCode: (shortCode: string) => Promise<boolean>;
@@ -40,14 +46,13 @@ export const useLinkStore = create<LinkState>((set, get) => ({
     }
   },
 
-  createLink: async (originalUrl) => {
+  createLink: async ({ originalUrl, optionalCode = null }) => {
     set({ isLoading: true });
     try {
-      const res = await axiosInstance.post(
-        "/links",
-        { originalUrl },
-        { withCredentials: true }
-      );
+      const res = await axiosInstance.post("/links", {
+        originalUrl,
+        optionalCode,
+      });
       set({ links: [res.data, ...get().links], isLoading: false });
       return res.data;
     } catch {
