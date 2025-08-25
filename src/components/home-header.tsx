@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { LinkIcon } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { LinkIcon } from "lucide-react";
 
 interface HomeHeaderProps {
-  onAuthClick: () => void
+  onAuthClick: () => void;
 }
 
 export function HomeHeader({ onAuthClick }: HomeHeaderProps) {
@@ -18,11 +18,11 @@ export function HomeHeader({ onAuthClick }: HomeHeaderProps) {
 
         <div className="flex items-center space-x-4">
           <Button variant="ghost" onClick={onAuthClick}>
-            Iniciar Sesión
+            Sign In
           </Button>
-          <Button onClick={onAuthClick}>Registrarse</Button>
+          <Button onClick={onAuthClick}>Sign Up</Button>
         </div>
       </div>
     </header>
-  )
+  );
 }

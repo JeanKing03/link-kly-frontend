@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { LinkIcon } from "lucide-react"
+import { LinkIcon } from "lucide-react";
 
 export function HomeFooter() {
   return (
@@ -13,14 +13,17 @@ export function HomeFooter() {
           </div>
 
           <p className="text-sm text-muted-foreground max-w-md">
-            La forma más elegante de acortar y gestionar tus enlaces. Simple, rápido y confiable.
+            The most elegant way to shorten and manage your links. Simple, fast,
+            and reliable.
           </p>
 
           <div className="pt-4 border-t w-full">
-            <p className="text-xs text-muted-foreground">© 2024 Linkly. Hecho con ❤️ para simplificar tus enlaces.</p>
+            <p className="text-xs text-muted-foreground">
+              © 2024 Linkly. Made with ❤️ to simplify your links.
+            </p>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

@@ -45,9 +45,9 @@ export function UrlShortenerForm({ onAuthRequired }: UrlShortenerFormProps) {
         const exists = await existsShortCode(customCode);
         console.log("exists", exists);
         if (exists) {
-          setError("El código personalizado ya está en uso");
+          setError("The custom code is already in use");
         } else {
-          setMessage("Valido!");
+          setMessage("Valid!");
         }
       }
     })();
@@ -64,52 +64,52 @@ export function UrlShortenerForm({ onAuthRequired }: UrlShortenerFormProps) {
     }
 
     if (!originalUrl) {
-      setError("Por favor ingresa una URL");
+      setError("Please enter a URL");
       return;
     }
 
     try {
       new URL(originalUrl);
     } catch {
-      setError("Por favor ingresa una URL válida");
+      setError("Please enter a valid URL");
       return;
     }
 
     const result = await createLink({ originalUrl, optionalCode: customCode });
     if (result) {
       const url = `https://www.midomino/${result.shortCode}`;
-      setSuccess("¡Enlace acortado exitosamente!");
+      setSuccess("Link shortened successfully!");
       setLastShortenedUrl(url);
       setOriginalUrl("");
       setCustomCode("");
     } else {
-      setError("Error al acortar la URL");
+      setError("Error shortening the URL");
     }
   };
 
   const copyToClipboard = async () => {
     if (lastShortenedUrl) {
       await navigator.clipboard.writeText(lastShortenedUrl);
-      setSuccess("¡Enlace copiado al portapapeles!");
+      setSuccess("Link copied to clipboard!");
     }
   };
 
   return (
     <Card className="w-full max-w-2xl">
       <CardHeader className="text-center">
-        <CardTitle className="text-3xl font-bold">Acorta tu enlace</CardTitle>
+        <CardTitle className="text-3xl font-bold">Shorten your link</CardTitle>
         <CardDescription className="text-lg">
-          Convierte URLs largas en enlaces cortos y fáciles de compartir
+          Turn long URLs into short, easy-to-share links
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="originalUrl">URL a acortar</Label>
+            <Label htmlFor="originalUrl">URL to shorten</Label>
             <Input
               id="originalUrl"
               type="url"
-              placeholder="https://ejemplo.com/mi-enlace-muy-largo"
+              placeholder="https://example.com/my-very-long-link"
               value={originalUrl}
               onChange={(e) => setOriginalUrl(e.target.value)}
               disabled={isLoading}
@@ -117,20 +117,16 @@ export function UrlShortenerForm({ onAuthRequired }: UrlShortenerFormProps) {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="customCode">Código personalizado (opcional)</Label>
+            <Label htmlFor="customCode">Custom code (optional)</Label>
             <div className="flex items-center space-x-2">
               <span className="text-sm text-muted-foreground">{origin}/</span>
               <Input
                 id="customCode"
                 type="text"
-                placeholder="mi-codigo"
+                placeholder="my-code"
                 maxLength={10}
                 value={customCode}
                 onChange={(e) =>
-                  // setCustomCode(
-                  //   e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "")
-                  // )
-                  // setCustomCode(e.target.value.replace(/[^0-9a-zA-Z]/g, ""))
                   setCustomCode(e.target.value.replace(/[^a-z0-9-]/g, ""))
                 }
                 disabled={isLoading}
@@ -148,7 +144,7 @@ export function UrlShortenerForm({ onAuthRequired }: UrlShortenerFormProps) {
             size="lg"
             disabled={isLoading}
           >
-            {isLoading ? "Acortando..." : "Acortar Enlace"}
+            {isLoading ? "Shortening..." : "Shorten Link"}
           </Button>
         </form>
 

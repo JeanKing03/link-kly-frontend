@@ -31,7 +31,7 @@ export function LoginForm({ onToggleMode, onSuccess }: LoginFormProps) {
     setError("");
 
     if (!email || !password) {
-      setError("Por favor completa todos los campos");
+      setError("Please fill in all fields");
       return;
     }
 
@@ -39,16 +39,16 @@ export function LoginForm({ onToggleMode, onSuccess }: LoginFormProps) {
     if (success) {
       onSuccess();
     } else {
-      setError("Credenciales incorrectas");
+      setError("Incorrect credentials");
     }
   };
 
   return (
     <Card className="w-full max-w-md">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-semibold">Iniciar Sesión</CardTitle>
+        <CardTitle className="text-2xl font-semibold">Sign In</CardTitle>
         <CardDescription>
-          Ingresa tus credenciales para acceder a tu cuenta
+          Enter your credentials to access your account
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -65,7 +65,7 @@ export function LoginForm({ onToggleMode, onSuccess }: LoginFormProps) {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Contraseña</Label>
+            <Label htmlFor="password">Password</Label>
             <Input
               id="password"
               type="password"
@@ -76,7 +76,7 @@ export function LoginForm({ onToggleMode, onSuccess }: LoginFormProps) {
           </div>
           {error && <p className="text-sm text-destructive">{error}</p>}
           <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Iniciando sesión..." : "Iniciar Sesión"}
+            {isLoading ? "Signing in..." : "Sign In"}
           </Button>
         </form>
         <div className="mt-4 text-center">
@@ -85,7 +85,7 @@ export function LoginForm({ onToggleMode, onSuccess }: LoginFormProps) {
             onClick={onToggleMode}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            ¿No tienes cuenta? Regístrate
+            Don't have an account? Sign up
           </button>
         </div>
       </CardContent>

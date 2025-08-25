@@ -39,7 +39,7 @@ export function LinksList() {
   };
 
   const handleDelete = (id: string) => {
-    if (confirm("¿Estás seguro de que quieres eliminar este enlace?")) {
+    if (confirm("Are you sure you want to delete this link?")) {
       deleteLink(id);
     }
   };
@@ -48,9 +48,9 @@ export function LinksList() {
     return (
       <Card>
         <CardHeader className="text-center">
-          <CardTitle>No tienes enlaces aún</CardTitle>
+          <CardTitle>You have no links yet</CardTitle>
           <CardDescription>
-            Crea tu primer enlace acortado usando el formulario de arriba
+            Create your first shortened link using the form above
           </CardDescription>
         </CardHeader>
       </Card>
@@ -60,8 +60,8 @@ export function LinksList() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-semibold">Tus Enlaces</h2>
-        <Badge variant="secondary">{links.length} enlaces</Badge>
+        <h2 className="text-2xl font-semibold">Your Links</h2>
+        <Badge variant="secondary">{links.length} links</Badge>
       </div>
 
       <div className="grid gap-4">
@@ -76,14 +76,14 @@ export function LinksList() {
                 <div className="flex items-start justify-between space-x-4">
                   <div className="flex-1 min-w-0 space-y-2">
                     <div className="flex items-center space-x-2">
-                      <h3 className="font-medium truncate">Enlace</h3>
-                      <Badge variant="outline">{link.clicks} clics</Badge>
+                      <h3 className="font-medium truncate">Link</h3>
+                      <Badge variant="outline">{link.clicks} clicks</Badge>
                     </div>
 
                     <div className="space-y-1">
                       <div className="flex items-center space-x-2">
                         <span className="text-sm text-muted-foreground">
-                          Corto:
+                          Short:
                         </span>
                         <code className="text-sm bg-muted px-2 py-1 rounded font-mono">
                           {link.shortCode}
@@ -99,7 +99,7 @@ export function LinksList() {
                         </Button>
                         {copiedId === link._id && (
                           <span className="text-xs text-green-600">
-                            ¡Copiado!
+                            Copied!
                           </span>
                         )}
                       </div>
@@ -115,7 +115,7 @@ export function LinksList() {
                     </div>
 
                     <div className="flex items-center space-x-4 text-xs text-muted-foreground">
-                      <span>Creado: {formatDate(link.createdAt)}</span>
+                      <span>Created: {formatDate(link.createdAt)}</span>
                     </div>
                   </div>
 
@@ -132,7 +132,7 @@ export function LinksList() {
                         }
                       >
                         <Copy className="h-4 w-4 mr-2" />
-                        Copiar enlace
+                        Copy link
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
                         <a
@@ -141,7 +141,7 @@ export function LinksList() {
                           rel="noopener noreferrer"
                         >
                           <ExternalLink className="h-4 w-4 mr-2" />
-                          Abrir enlace
+                          Open link
                         </a>
                       </DropdownMenuItem>
                       <DropdownMenuItem
@@ -149,7 +149,7 @@ export function LinksList() {
                         className="text-destructive focus:text-destructive"
                       >
                         <Trash2 className="h-4 w-4 mr-2" />
-                        Eliminar
+                        Delete
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
